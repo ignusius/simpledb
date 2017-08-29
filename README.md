@@ -1,9 +1,13 @@
 # simpledb #
 
 This library for simply use Databases (It works with drivers for database/sql).
+## How do I install it? ##
+```go get -v -u bitbucket.org/ignusius/simpledb
+```
 
 ## Example ##
-SQlite for example
+SQlite for example.
+test.db
 ```SQL
 CREATE TABLE data (
     "article" INTEGER NOT NULL,
@@ -27,7 +31,7 @@ import (
 func main() {
 	db := new(simpledb.DB)
 	// or db:=simpledb.DB{}
-	err := db.NewDatabase("sqlite3", "gfz")
+	err := db.NewDatabase("sqlite3", "test.db")
 	if err != nil {
 		panic(err)
 	}
