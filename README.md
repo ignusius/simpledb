@@ -2,7 +2,8 @@
 
 This library for simply use Databases (It works with drivers for database/sql).
 ## How do I install it? ##
-```go get -v -u bitbucket.org/ignusius/simpledb
+```
+go get bitbucket.org/ignusius/simpledb
 ```
 
 ## Example ##
