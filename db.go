@@ -12,8 +12,8 @@ type DB struct {
 	rows *sql.Rows
 }
 
-//NewDB - create new database
-func (d *DB) NewDB(database, basename string) error {
+//NewDatabase - create new database
+func (d *DB) NewDatabase(database, basename string) error {
 	d.db, d.err = sql.Open(database, basename)
 	if d.err != nil {
 		return errors.New("DataBase not found")
