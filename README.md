@@ -115,7 +115,7 @@ import (
 func main() {
 	db := new(simpledb.DB)
 	// or db:=simpledb.DB{}
-	err := db.NewDatabase("postgres", `dbname=test user=wistra password=wistrapass host=192.168.27.23 port=5432  sslmode=disable`)
+	err := db.NewDatabase("postgres", `dbname=test user=еуые password=pass host=localhost port=5432  sslmode=disable`)
 	if err != nil {
 		panic(err)
 	}
