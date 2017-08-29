@@ -3,6 +3,17 @@
 This library for simply use Databases (It works with drivers for database/sql).
 
 ## Example ##
+SQlite for example
+```SQL
+CREATE TABLE data (
+    "article" INTEGER NOT NULL,
+    "title" TEXT NOT NULL,
+    "note" TEXT NOT NULL DEFAULT (0),
+    "sum" INTEGER NOT NULL DEFAULT (0)
+, "reject" INTEGER)
+```
+example.go
+
 ```go
 package main
 
@@ -35,4 +46,9 @@ func main() {
 
 	db.Close()
 }
+```
+Output
+```
+[[1 [116 101 115 116] [116 101 115 116] 2 3]]
+test
 ```
