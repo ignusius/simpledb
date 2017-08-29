@@ -1,3 +1,4 @@
+//Package simpledb for simple use databases.
 package simpledb
 
 import (
@@ -61,9 +62,9 @@ func (d *DB) Query(query string, args ...interface{}) ([][]interface{}, error) {
 
 //Exec - for exec to database
 func (d *DB) Exec(exec string, args ...interface{}) error {
-	_, err := d.db.Exec(exec, args...)
-	if err != nil {
-		return err
+	_, d.err = d.db.Exec(exec, args...)
+	if d.err != nil {
+		return d.err
 	}
 	return nil
 }
