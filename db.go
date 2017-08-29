@@ -12,23 +12,22 @@ type DB struct {
 	rows *sql.Rows
 }
 
-//NewDB create new SQLite db
-func (d *DB) NewDB() error {
-	d.db, d.err = sql.Open("sqlite3", "gfz")
+//NewDB - create new database
+func (d *DB) NewDB(database, basename string) error {
+	d.db, d.err = sql.Open(database, basename)
 	if d.err != nil {
 		return errors.New("DataBase not found")
 	}
 	return nil
 }
 
-//Query is
+//Query - for query from database
 func (d *DB) Query(query string, args ...interface{}) ([][]interface{}, error) {
 	var emptyReturn [][]interface{}
 
-	// query
 	d.rows, d.err = d.db.Query(query, args...)
 	if d.err != nil {
-		return emptyReturn, errors.New("SELECT query is wrong")
+		return emptyReturn, errors.New("Query -> query error")
 	}
 	var varReturn [][]interface{}
 
@@ -44,7 +43,7 @@ func (d *DB) Query(query string, args ...interface{}) ([][]interface{}, error) {
 		}
 		d.err = d.rows.Scan(varArrPtrs...)
 		if d.err != nil {
-			return emptyReturn, errors.New("SELECT row.Scan error")
+			return emptyReturn, errors.New("Query -> row.Scan error")
 		}
 		varReturn = append(varReturn, tmp)
 		for i := range varArr {
@@ -60,6 +59,7 @@ func (d *DB) Query(query string, args ...interface{}) ([][]interface{}, error) {
 
 }
 
+//Exec - for exec to database
 func (d *DB) Exec(exec string, args ...interface{}) error {
 	_, err := d.db.Exec(exec, args...)
 	if err != nil {
@@ -68,7 +68,7 @@ func (d *DB) Exec(exec string, args ...interface{}) error {
 	return nil
 }
 
-//Close Sqlite database
+//Close - close  database
 func (d *DB) Close() {
 	d.db.Close()
 }
