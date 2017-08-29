@@ -52,6 +52,13 @@ func main() {
 	db.Close()
 }
 ```
+
+Output
+```
+[[1 [116 101 115 116] [116 101 115 116] 2 3]]
+test
+```
+
 ## Example PostgeSQL ##
 PostgresSQL for example.
 
@@ -116,6 +123,6 @@ func main() {
 
 Output
 ```
-[[1 [116 101 115 116] [116 101 115 116] 2 3]]
+[[1 test test 2 3]]
 test
 ```
