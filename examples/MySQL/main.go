@@ -3,7 +3,7 @@ package main
 import (
     "fmt"
 
-    "simpledb"
+     "bitbucket.org/ignusius/simpledb"
 
     _ "github.com/go-sql-driver/mysql"
 )
