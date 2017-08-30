@@ -63,7 +63,7 @@ func main() {
 		panic(err)
 	}
 	fmt.Println(arr)
-	fmt.Println(simpledb.SQLstrconv(arr[0][2]))
+	fmt.Println(arr[0][2])
 
 	db.Close()
 }
@@ -71,7 +71,7 @@ func main() {
 
 Output
 ```
-[[1 [116 101 115 116] [116 101 115 116] 2 3]]
+[[1 test test 2 3]]
 test
 ```
 
