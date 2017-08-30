@@ -22,6 +22,17 @@ This library for simply use Databases (It works with drivers for database/sql).
 go get bitbucket.org/ignusius/simpledb
 ```
 
+## Note ##
+
+```
+MySQL               PostgreSQL            SQlite
+
+WHERE col = ?       WHERE col = $1        WHERE col = $1 
+VALUES(?, ?, ?)     VALUES($1, $2, $3)    WHERE col = ?
+                                          VALUES($1, $2, $3) 
+										  VALUES(?, ?, ?)
+```
+
 ## Example SQLite##
 SQlite for example.
 
