@@ -22,6 +22,17 @@ This library for simply use Databases (It works with drivers for database/sql).
 go get bitbucket.org/ignusius/simpledb
 ```
 
+## Note ##
+
+```
+MySQL               PostgreSQL            SQlite
+
+WHERE col = ?       WHERE col = $1        WHERE col = $1 
+VALUES(?, ?, ?)     VALUES($1, $2, $3)    WHERE col = ?
+                                          VALUES($1, $2, $3) 
+										  VALUES(?, ?, ?)
+```
+
 ## Example SQLite##
 SQlite for example.
 
@@ -137,6 +148,67 @@ func main() {
 }
 ```
 
+
+Output
+```
+[[1 test test 2 3]]
+test
+```
+
+## Example MySQL ##
+
+PostgresSQL for example.
+
+database name -> "test"
+
+tablename -> "data"
+
+```SQL
+CREATE TABLE `test`.`new_table` (
+  `article` INT NULL,
+  `title` VARCHAR(45) NULL,
+  `note` TEXT NULL,
+  `sum` INT NULL,
+  `reject` INT NULL);
+```
+example.go
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"simpledb"
+
+	_ "github.com/go-sql-driver/mysql"
+)
+
+func main() {
+	db := new(simpledb.DB)
+
+	// or db:=simpledb.DB{}
+	err := db.NewDatabase("mysql", "root:password@tcp(127.0.0.1:3306)/test")
+	if err != nil {
+		panic(err)
+	}
+	defer db.Close()
+
+	err = db.Exec("INSERT INTO data values (?,?,?,?,?)", 1, "test", "test", 2, 3)
+	if err != nil {
+		panic(err)
+	}
+
+	arr, err := db.Query("SELECT * FROM data")
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(arr)
+	fmt.Println(arr[0][2])
+
+}
+```
 
 Output
 ```
