@@ -1,4 +1,4 @@
-//Package simpleDb for simple use databases.
+//Package simpledb for simple use databases.
 package simpledb
 
 import (
