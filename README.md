@@ -24,6 +24,7 @@ go get bitbucket.org/ignusius/simpledb
 
 ## Example SQLite##
 SQlite for example.
+
 test.db
 ```SQL
 CREATE TABLE data (
@@ -115,7 +116,7 @@ import (
 func main() {
 	db := new(simpledb.DB)
 	// or db:=simpledb.DB{}
-	err := db.NewDatabase("postgres", `dbname=test user=еуые password=pass host=localhost port=5432  sslmode=disable`)
+	err := db.NewDatabase("postgres", `dbname=test user=test password=pass host=localhost port=5432  sslmode=disable`)
 	if err != nil {
 		panic(err)
 	}
