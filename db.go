@@ -6,7 +6,7 @@ import (
 	"errors"
 )
 
-//DB is structure SQlite database
+//DB is structure of database
 type DB struct {
 	db   *sql.DB
 	err  error
@@ -48,8 +48,16 @@ func (d *DB) Query(query string, args ...interface{}) ([][]interface{}, error) {
 		}
 		varReturn = append(varReturn, tmp)
 		for i := range varArr {
+			switch t := varArr[i].(type) {
+			//In SQLite text is []uint8 type
+			case []uint8:
+				varReturn[counter] = append(varReturn[counter], SQLiteStrconv(varArr[i]))
 
-			varReturn[counter] = append(varReturn[counter], varArr[i])
+			default:
+				_ = t
+				varReturn[counter] = append(varReturn[counter], varArr[i])
+			}
+
 		}
 		counter++
 	}
