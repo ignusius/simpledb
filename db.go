@@ -59,8 +59,9 @@ func (d *DB) Query(query string, args ...interface{}) ([][]interface{}, error) {
 		for i := range varArr {
 			switch t := varArr[i].(type) {
 
-			//In SQLite text is []uint8 type
+			//In SQLite and MySQL text is []uint8 type
 			case []uint8:
+			
 				varReturn[counter] = append(varReturn[counter], SQLiteStrconv(varArr[i]))
 
 			default:
@@ -91,12 +92,3 @@ func (d *DB) Close() {
 	d.Db.Close()
 }
 
-//Ping - chack status connection to database
-func (d *DB) Ping() error {
-	d.err = d.Db.Ping()
-	if d.err != nil {
-		fmt.Println(d.err)
-		return d.err
-	}
-	return nil
-}
