@@ -1,6 +1,6 @@
 # simpledb #
 
-This library for simply use Databases (It works with drivers for database/sql).
+This library for simple use Databases (It works with drivers for database/sql).
 
 ## LICENSE ##
 ```
