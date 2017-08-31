@@ -39,5 +39,6 @@ func TestQuery(t *testing.T) {
 	if err != nil {
 		t.Fatal("Error! Clearing database error")
 	}
+	db.Close()
 
 }
