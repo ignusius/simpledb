@@ -160,6 +160,55 @@ Output
 [[1 test test 2 3]]
 test
 ```
+
+## Transactions ##
+
+```go
+package main
+
+import (
+    "fmt"
+
+    "simpledb"
+    _ "github.com/mattn/go-sqlite3"
+)
+
+func main() {
+
+    db := new(simpledb.DB)
+    // or db:=simpledb.DB{}
+    err := db.NewDatabase("sqlite3", "test")
+    if err != nil {
+        panic(err)
+    }
+    db.Begin()
+    
+
+    db.Prepare("INSERT INTO data values ($1,$2,$3,$4,$5)")
+    db.StmtExec(1,2,3,4,5)
+    db.StmtExec(1,2,3,4,5)
+    db.StmtExec(1,2,3,4,5)
+    db.StmtExec(1,2,3,4,5)
+    db.StmtExec(1,2,3,4,5)
+    //db.Rollback()
+ 
+    db.Commit()
+   
+
+    arr, err := db.Query("SELECT * FROM data")
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(arr)
+
+    db.Close()
+}
+```
+Output
+```
+[[1 2 3 4 5] [1 2 3 4 5] [1 2 3 4 5] [1 2 3 4 5] [1 2 3 4 5]]
+```
+
 ![picture](examples/lulz.jpg)
 
 ### Contacts ###
