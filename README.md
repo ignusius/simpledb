@@ -36,15 +36,7 @@ VALUES(?, ?, ?)     VALUES($1, $2, $3)    WHERE col = ?
 ## Example SQLite##
 SQlite for example.
 
-test.db
-```SQL
-CREATE TABLE data (
-    "article" INTEGER NOT NULL,
-    "title" TEXT NOT NULL,
-    "note" TEXT NOT NULL DEFAULT (0),
-    "sum" INTEGER NOT NULL DEFAULT (0),
-	"reject" INTEGER)
-```
+
 example.go
 
 ```go
@@ -81,38 +73,10 @@ func main() {
 }
 ```
 
-Output
-```
-[[1 test test 2 3]]
-test
-```
-
 ## Example PostgeSQL ##
 PostgresSQL for example.
 
-database name -> "test"
 
-tablename -> "data"
-
-```SQL
--- Table: data
-
--- DROP TABLE data;
-
-CREATE TABLE data
-(
-  article integer,
-  title text,
-  note text,
-  sum integer,
-  reject integer
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE data
-  OWNER TO test;
-```
 example.go
 ```go
 package main
@@ -148,29 +112,10 @@ func main() {
 }
 ```
 
-
-Output
-```
-[[1 test test 2 3]]
-test
-```
-
 ## Example MySQL ##
 
 PostgresSQL for example.
 
-database name -> "test"
-
-tablename -> "data"
-
-```SQL
-CREATE TABLE `test`.`new_table` (
-  `article` INT NULL,
-  `title` VARCHAR(45) NULL,
-  `note` TEXT NULL,
-  `sum` INT NULL,
-  `reject` INT NULL);
-```
 example.go
 
 ```go
