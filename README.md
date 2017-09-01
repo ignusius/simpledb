@@ -178,7 +178,7 @@ func main() {
     db.Begin()
     
 
-    db.Prepare("INSERT INTO data values ($1,$2,$3,$4,$5)")
+    db.TxPrepare("INSERT INTO data values ($1,$2,$3,$4,$5)")
     db.StmtExec(1,2,3,4,5)
     db.StmtExec(1,2,3,4,5)
     db.StmtExec(1,2,3,4,5)
