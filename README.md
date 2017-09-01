@@ -34,8 +34,6 @@ VALUES(?, ?, ?)     VALUES($1, $2, $3)    WHERE col = ?
 ```
 
 ## Example SQLite##
-SQlite for example.
-
 
 example.go
 
@@ -74,8 +72,6 @@ func main() {
 ```
 
 ## Example PostgeSQL ##
-PostgresSQL for example.
-
 
 example.go
 ```go
@@ -113,8 +109,6 @@ func main() {
 ```
 
 ## Example MySQL ##
-
-PostgresSQL for example.
 
 example.go
 
