@@ -58,7 +58,7 @@ func (d *DB) Query(query string, args ...interface{}) ([][]interface{}, error) {
 			//In SQLite and MySQL text is []uint8 type
 			case []uint8:
 
-				varReturn[counter] = append(varReturn[counter], SQLiteStrconv(varArr[i]))
+				varReturn[counter] = append(varReturn[counter], sqliteStrconv(varArr[i]))
 
 			default:
 				_ = t
