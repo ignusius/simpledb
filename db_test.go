@@ -1,9 +1,6 @@
 package simpledb
 
 import (
-	"fmt"
-	"reflect"
-	"strconv"
 	"testing"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -15,6 +12,10 @@ func TestNewDatabase(t *testing.T) {
 	err := db.NewDatabase("sqlite3", "db_test.db")
 	if err != nil {
 		t.Fatal("Error! file db_test.db not found!")
+	}
+	err = db.Exec("DELETE FROM DATA")
+	if err != nil {
+		t.Fatal("Error! Clearing database error")
 	}
 }
 
@@ -33,7 +34,7 @@ func TestQuery(t *testing.T) {
 		t.Fatal("Error! Error Query!")
 	}
 	expected := []interface{}{1, "test", "test", 2, 3}
-	if reflect.DeepEqual(expected, arr[0]) {
+	if !compare(expected, arr[0]) {
 		t.Fatal("Warring! value != expected")
 
 	}
@@ -89,51 +90,14 @@ func TestTxPrepare(t *testing.T) {
 		t.Fatal("Error! Error Query!")
 	}
 	expected := []interface{}{1, "test", "test", 2, 3}
-	if !reflect.DeepEqual(expected, arr[0]) {
+	if !compare(expected, arr[0]) {
 		t.Fatal("Warring! value != expected")
 
 	}
-	//err = db.Exec("DELETE FROM DATA")
-	///if err != nil {
-	//	t.Fatal("Error! Clearing database error")
-	//}
+	
 
 }
 
 func TestClose(t *testing.T) {
 	db.Close()
-}
-
-func compare(a, b []interface{}) bool {
-	//fmt.Println(reflect.TypeOf(a[0]))
-	//fmt.Println(reflect.TypeOf(b[0]))
-	//fmt.Println(reflect.DeepEqual(a, b))
-	if len(a) != len(b) {
-		return false
-	}
-	for i := range a {
-		if reflect.TypeOf(a[0]).String() == "int64" || reflect.TypeOf(b[0]).String() == "int64" {
-			if Num64(a[i]) != Num64(b[i]) {
-				return false
-			}
-
-		}
-		//fmt.Println(reflect.TypeOf(a[0]))
-		//fmt.Println(reflect.TypeOf(b[0]))
-		if a[i] != b[i] {
-			return false
-		}
-
-	}
-	return true
-}
-
-func Num64(n interface{}) int64 {
-	s := fmt.Sprintf("%d", n)
-	i, err := strconv.ParseInt(s, 10, 64)
-	if err != nil {
-		return 0
-	} else {
-		return i
-	}
 }
