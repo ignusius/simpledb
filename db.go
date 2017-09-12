@@ -113,6 +113,15 @@ func (d *DB) StmtExec(args ...interface{}) error {
 	return nil
 }
 
+//StmtClose  - close stmt
+func (d *DB) StmtClose() error {
+	d.err = d.stmt.Close()
+	if d.err != nil {
+		return d.err
+	}
+	return nil
+}
+
 //Begin starts a transaction. The default isolation level is dependent on the driver.
 func (d *DB) Begin() error {
 	d.tx, d.err = d.Db.Begin()
