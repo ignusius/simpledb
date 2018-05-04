@@ -36,7 +36,7 @@ VALUES(?, ?, ?)     VALUES($1, $2, $3)    WHERE col = ?
 										  VALUES(?, ?, ?)
 ```
 
-## Example SQLite##
+## Example SQLite ##
 
 example.go
 
