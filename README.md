@@ -1,3 +1,6 @@
+[![GoDoc](https://godoc.org/github.com/"github.com/ignusius/simpledb"?status.svg)](http://godoc.org/github.com/ignusius/simpledb)
+[![Travis](https://travis-ci.org/ignusius/simpledb.svg)](https://travis-ci.org/ignusius/simpledb)
+
 # simpledb #
 
 This library for simple use Databases (It works with drivers for database/sql).
