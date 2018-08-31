@@ -187,7 +187,7 @@ func main() {
     db.StmtExec(1,2,3,4,5)
     db.StmtExec(1,2,3,4,5)
     db.StmtExec(1,2,3,4,5)
-	db.StmtClose()
+    db.StmtClose()
     //db.Rollback()
  
     db.Commit()
