@@ -33,7 +33,7 @@ MySQL               PostgreSQL            SQlite
 WHERE col = ?       WHERE col = $1        WHERE col = $1 
 VALUES(?, ?, ?)     VALUES($1, $2, $3)    WHERE col = ?
                                           VALUES($1, $2, $3) 
-										  VALUES(?, ?, ?)
+					  VALUES(?, ?, ?)
 ```
 
 ## Example SQLite ##
@@ -46,7 +46,7 @@ package main
 import (
 	"fmt"
 
-	"bitbucket.org/ignusius/simpledb"
+	"github.com/ignusius/simpledb"
 	_ "github.com/mattn/go-sqlite3"
 )
 
@@ -83,7 +83,7 @@ package main
 import (
 	"fmt"
 
-	"bitbucket.org/ignusius/simpledb"
+	"github.com/ignusius/simpledb"
 	_ "github.com/lib/pq"
 )
 
@@ -121,7 +121,7 @@ package main
 import (
 	"fmt"
 
-	"simpledb"
+	"github.com/ignusius/simpledb"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -166,7 +166,7 @@ package main
 import (
     "fmt"
 
-    "simpledb"
+    "github.com/ignusius/simpledb"
     _ "github.com/mattn/go-sqlite3"
 )
 
