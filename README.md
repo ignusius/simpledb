@@ -22,7 +22,7 @@ This library for simple use Databases (It works with drivers for database/sql).
 ```
 ## How do I install it? ##
 ```
-go get bitbucket.org/ignusius/simpledb
+go get github.com/ignusius/simpledb
 ```
 
 ## Note ##
